@@ -15,7 +15,12 @@
                         </a>
                     </div>
                 </div>
+                <div class="mb-3">
 
+                    <label for="search" class="form-label">Buscar</label>
+                    <input class="form-control" type="text" id="search">
+
+                </div>
                 <div class="container p-3">
                     <div class="row">
                         <div class="col-12">
@@ -31,7 +36,7 @@
                                 <tbody>
                                     @foreach($categories as $cat)
                                         <tr>
-                                            <td><a class="text-decoration-none" href="#">{{$cat->category}}</a></td>
+                                            <td>{{$cat->category}}</td>
                                             <td>
                                                 @if(!$cat->description)
                                                     No definida
@@ -39,13 +44,16 @@
                                                     {{$cat->description}}
                                                 @endif
                                             </td>
-                                            <td class="text-center row">
-                                                <div class="col-6">
-                                                    <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <td class="text-center">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                                </div>
+
                                             </td>
                                             <td class="text-center">
                                                 @if($cat->status==1)
