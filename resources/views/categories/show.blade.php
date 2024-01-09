@@ -2,13 +2,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
                 <div class="row p-3 text-gray-900">
                     <div class="fs-3">
-                        {{ __("DETALLES") }}
+                        {{ __("DETALLES")}}
                     </div>
                 </div>
-
                 <div class="row p-5">
                     <div class="flex justify-center align-center">
                         <table class="col-6">
@@ -20,8 +18,7 @@
                                         id="category"
                                         name="category"
                                         value="{{$category->category}}"
-                                        disabled
-                                    >
+                                        disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -31,46 +28,29 @@
                                         type="text"
                                         id="description"
                                         name="description"
-                                        @if($category->description)
-                                            value="{{$category->description}}"
-                                        @else
-                                            value="No definida"
-                                        @endif
-                                        disabled
-                                    >
+                                        value="{{$category->description?$category->description:'No definida'}}"
+                                        disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td><label for="status" class="uppercase">Estado:</label></td>
                                 <td>
-                                    <div class="d-flex gap-2 align-items-center">
-
-                                        {{-- <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                                            type="radio"
-                                            id="act"
-                                            name="status"
-                                            value="1"
-                                            {{$category->status===1?'checked':''}}
-                                            disabled> --}}
-                                        <label for="status">{{$category->status===1?'ACTIVO':'INACTIVO'}}</label>
-
-                                        {{-- <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                                            type="radio"
-                                            id="inact"
-                                            name="status"
-                                            value="0"
-                                            {{$category->status===0?'checked':''}}
-                                            disabled>
-                                        <label for="inact">INACTIVO</label> --}}
-
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-6 d-flex align-items-center gap-2">
+                                            <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                type="text"
+                                                id="status"
+                                                name="status"
+                                                value="{{$category->status===1?'ACTIVO':'INACTIVO'}}"
+                                                disabled>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
                         </table>
                     </div>
-
                     <div class="text-center">
-                        <a href="{{route('category.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-auto">
+                        <a href="{{route('category.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
                             <strong>Cancelar</strong>
                         </a>
                     </div>

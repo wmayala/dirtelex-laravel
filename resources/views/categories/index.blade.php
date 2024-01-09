@@ -1,4 +1,14 @@
 <x-app-layout>
+    
+    @if(session('success'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -39,29 +49,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categories as $cat)
+                                    @foreach($categories as $category)
                                         <tr>
-                                            <td><a href="{{route('category.show', $cat->id)}}">{{$cat->category}}</a></td>
-                                            <td>
-                                                @if(!$cat->description)
+                                            <td class="col-5">{{$category->category}}</td>
+                                            <td class="col-5">
+                                                @if(!$category->description)
                                                     No definida
                                                 @else
-                                                    {{$cat->description}}
+                                                    {{$category->description}}
                                                 @endif
                                             </td>
                                             <td class="text-center">
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    <div class="col-4">
+                                                        <a href="{{route('category.show', $category->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-4">
+                                                        <a href="{{route('category.edit', $category->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <div class="col-4">
                                                         <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                     </div>
+
                                                 </div>
 
                                             </td>
                                             <td class="text-center">
-                                                @if($cat->status==1)
+                                                @if($category->status==1)
                                                     <span class="badge bg-success">ACTIVO</span>
                                                 @else
                                                     <span class="badge bg-danger">INACTIVO</span>
