@@ -41,7 +41,7 @@
                                 <tbody>
                                     @foreach($categories as $cat)
                                         <tr>
-                                            <td>{{$cat->category}}</td>
+                                            <td><a href="{{route('category.show', $cat->id)}}">{{$cat->category}}</a></td>
                                             <td>
                                                 @if(!$cat->description)
                                                     No definida
