@@ -10,10 +10,20 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories=Category::get();
-        return view('categories.index')->with('categories', $categories);
+        if($request)
+        {
+            $search=$request->input('search');
+            $categories=Category::where('category','like','%'.$search.'%')->get();
+            //dd($categories);
+            return view('categories.index')->with('categories', $categories);
+        }
+        else
+        {
+            $categories=Category::get();
+            return view('categories.index')->with('categories', $categories);
+        }
     }
 
     /**
@@ -69,5 +79,10 @@ class CategoryController extends Controller
         $category=Category::find($id);
         $category->delete();
         return redirect()->route('category.index')->with('success','Categoría eliminada correctamente');
+    }
+
+    public function search(Request $request)
+    {
+
     }
 }
