@@ -16,13 +16,14 @@ class CategoryController extends Controller
         {
             $search=$request->input('search');
             $categories=Category::where('category','like','%'.$search.'%')->get();
-            //dd($categories);
-            return view('categories.index')->with('categories', $categories);
+            return view('categories.index')
+                ->with('categories', $categories);
         }
         else
         {
             $categories=Category::get();
-            return view('categories.index')->with('categories', $categories);
+            return view('categories.index')
+                ->with('categories', $categories);
         }
     }
 
@@ -40,7 +41,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return redirect()->route('category.index')->with('success','Categoría creada correctamente');
+        return redirect()->route('category.index')
+            ->with('success','Categoría creada correctamente');
     }
 
     /**
@@ -68,7 +70,9 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->update($request->all());
-        return redirect()->route('category.index')->with('success','Categoría actualizada correctamente');
+        return redirect()
+            ->route('category.index')
+            ->with('success','Categoría actualizada correctamente');
     }
 
     /**
@@ -78,6 +82,8 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
-        return redirect()->route('category.index')->with('danger','Categoría eliminada correctamente');
+        return redirect()
+            ->route('category.index')
+            ->with('danger','Categoría eliminada correctamente');
     }
 }
