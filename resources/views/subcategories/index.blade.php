@@ -64,7 +64,7 @@
                                                     {{$subcategory->description}}
                                                 @endif --}}
                                             </td>
-                                            <td class="col-4">{{$subcategory->category->category}}</td>
+                                            <td class="col-4">{{$subcategory->category_id}}</td>
                                             <td class="text-center">
                                                 <div class="row">
                                                     <div class="col-4">

@@ -43,7 +43,9 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subcategory::create($request->all());
+        return redirect()->route('subcategory.index')
+            ->with('success','Subcategoría creada correctamente');
     }
 
     /**

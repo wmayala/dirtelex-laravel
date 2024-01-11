@@ -42,7 +42,16 @@
                                         <select name="category" id="category" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
                                             <option selected>Seleccione una categoría</option>
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->category}}</option>
+
+
+
+
+                                            // NO RECONOCE EL category_id
+
+
+
+
+                                            <option value="{{$subcategory->category_id}}">{{$category->category}}</option>
                                             @endforeach
                                         </select>
                                         {{-- <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
