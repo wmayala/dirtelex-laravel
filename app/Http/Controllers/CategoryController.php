@@ -78,11 +78,6 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
-        return redirect()->route('category.index')->with('success','Categoría eliminada correctamente');
-    }
-
-    public function search(Request $request)
-    {
-
+        return redirect()->route('category.index')->with('danger','Categoría eliminada correctamente');
     }
 }

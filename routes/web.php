@@ -13,7 +13,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/category/search', [CategoryController::class, 'search'])->name('category.search');
+    //Route::get('/category/search', [CategoryController::class, 'search'])->name('category.search');
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');

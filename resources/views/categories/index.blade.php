@@ -1,37 +1,18 @@
 <x-app-layout>
     @section('title','Categorías')
     @if(session('success'))
-
-    <script>
-        function deleteObject()
-        {
-            event.preventDefault();
-            var form=event.target.form;
-
-            Swal.fire({
-                     'title':'¿Eliminar?',
-                'text':'',
-                'icon':'danger',
-                'showCancelButton':'true',
-                'confirmButtonText':'Si, eliminar',
-                'cancelButtonText':'Cancelar',
-            },
-
-            function (isConfirm){
-                if(isConfirm)
-                {
-                    form.submit();
-                }
-            });
-
-
-        }
-
-    </script>
-
         <div class="d-flex justify-content-center">
-            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                 <strong>{{session('success')}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    @elseif(session('danger'))
+        <div class="d-flex justify-content-center">
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                <strong>{{session('danger')}}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -98,57 +79,6 @@
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                         </button>
                                                     </form>
-
-
-
-
-
-                                                    {{-- <form action="{{route('category.delete', $category->id)}}" method="POST" id="deleteCategory">
-                                                        @csrf @method('DELETE')
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-category="{{$category->id}}">
-                                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                                        </button>
-                                                    </form>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    data-category {{$category->id}}
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <script>
-                                                        function confirmarEliminar() {
-                                                            // Código para confirmar la eliminación
-                                                            document.getElementById('eliminarForm').submit();
-                                                        }
-                                                    </script> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </td>

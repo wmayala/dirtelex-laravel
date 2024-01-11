@@ -26,13 +26,35 @@
                                 <tr>
                                     <td><label for="status" class="uppercase">Estado:</label></td>
                                     <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="act"
+                                                    name="status"
+                                                    value="1"
+                                                    checked>
+                                                <label for="act">ACTIVO</label>
+                                            </div>
+
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="inact"
+                                                    name="status"
+                                                    value="0">
+                                                <label for="inact">INACTIVO</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    {{-- <td>
                                         <div class="d-flex gap-2 align-items-center">
                                             <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="radio" id="act" name="status" value=1 checked>
                                             <label for="act">ACTIVO</label>
                                             <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="radio" id="inact" name="status" value=0>
                                             <label for="inact">INACTIVO</label>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             </table>
                         </div>
