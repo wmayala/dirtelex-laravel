@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title','Detalles de categoría')
+    @section('title','Detalles de subcategoría')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -12,13 +12,13 @@
                     <div class="flex justify-center align-center">
                         <table class="col-6">
                             <tr>
-                                <td><label for="category" class="uppercase">Nombre:</label></td>
+                                <td><label for="subcategory" class="uppercase">Nombre:</label></td>
                                 <td>
                                     <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                         type="text"
-                                        id="category"
-                                        name="category"
-                                        value="{{$category->category}}"
+                                        id="subcategory"
+                                        name="subcategory"
+                                        value="{{$subcategory->subcategory}}"
                                         disabled>
                                 </td>
                             </tr>
@@ -29,7 +29,18 @@
                                         type="text"
                                         id="description"
                                         name="description"
-                                        value="{{$category->description?$category->description:'No definida'}}"
+                                        value="{{$subcategory->description?$subcategory->description:'No definida'}}"
+                                        disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="category_id" class="uppercase">Categoría:</label></td>
+                                <td>
+                                    <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                        type="text"
+                                        id="category_id"
+                                        name="category_id"
+                                        value="{{$subcategory->category->category}}"
                                         disabled>
                                 </td>
                             </tr>
@@ -42,7 +53,7 @@
                                                 type="text"
                                                 id="status"
                                                 name="status"
-                                                value="{{$category->status===1?'ACTIVO':'INACTIVO'}}"
+                                                value="{{$subcategory->status===1?'ACTIVO':'INACTIVO'}}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -51,8 +62,8 @@
                         </table>
                     </div>
                     <div class="text-center">
-                        <a href="{{route('category.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
-                            <strong>Cancelar</strong>
+                        <a href="{{route('subcategory.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
+                            <strong><< Regresar</strong>
                         </a>
                     </div>
                 </div>

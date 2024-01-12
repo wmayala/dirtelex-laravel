@@ -52,7 +52,7 @@
                     </div>
                     <div class="text-center">
                         <a href="{{route('category.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
-                            <strong>Cancelar</strong>
+                            <strong><< Regresar</strong>
                         </a>
                     </div>
                 </div>

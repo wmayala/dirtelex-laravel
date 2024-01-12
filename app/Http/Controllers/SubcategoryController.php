@@ -24,6 +24,7 @@ class SubcategoryController extends Controller
         else
         {
             $subcategories=Subcategory::get();
+            $cat=$subcategories->category;
             return view('subcategories.index')
                 ->with('subcategories', $subcategories);
         }
@@ -43,7 +44,16 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Subcategory::create($request->all());
+        $subcategories=new Subcategory([
+            'subcategory'=>$request->subcategory,
+            'description'=>$request->description,
+            //'category_id'=>$request->category_id,
+            'status'=>$request->status,
+        ]);
+        $subcategories->category()->associate(Category::find($request->category_id));
+
+        $subcategories->save();
+
         return redirect()->route('subcategory.index')
             ->with('success','Subcategoría creada correctamente');
     }
@@ -53,7 +63,8 @@ class SubcategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('subcategories.show', compact('subcategory'));
     }
 
     /**
@@ -61,7 +72,8 @@ class SubcategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('subcategories.update', compact('subcategory'));
     }
 
     /**

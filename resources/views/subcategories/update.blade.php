@@ -6,12 +6,12 @@
 
                 <div class="row p-3 text-gray-900">
                     <div class="fs-3">
-                        {{ __("ACTUALIZAR CATEGORÍA") }}
+                        {{ __("ACTUALIZAR SUBCATEGORÍA") }}
                     </div>
                 </div>
 
                 <div class="row p-5">
-                    <form action="{{route('category.update',$category->id)}}" method="POST">
+                    <form action="{{route('subcategory.update',$subcategory->id)}}" method="POST">
                         @csrf @method('PUT')
                         <div class="flex justify-center align-center">
                             <table class="col-6">
@@ -20,9 +20,9 @@
                                     <td>
                                         <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                             type="text"
-                                            id="category"
-                                            name="category"
-                                            value="{{$category->category}}">
+                                            id="subcategory"
+                                            name="subcategory"
+                                            value="{{$subcategory->subcategory}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -32,8 +32,8 @@
                                             type="text"
                                             id="description"
                                             name="description"
-                                            @if($category->description)
-                                                value="{{$category->description}}"
+                                            @if($subcategory->description)
+                                                value="{{$subcategory->description}}"
                                             @else
                                                 value="No definida"
                                             @endif>
@@ -49,7 +49,7 @@
                                                     id="act"
                                                     name="status"
                                                     value="1"
-                                                    {{$category->status===1?'checked':''}}>
+                                                    {{$subcategory->status===1?'checked':''}}>
                                                 <label for="act">ACTIVO</label>
                                             </div>
 
