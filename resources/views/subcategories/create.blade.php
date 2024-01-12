@@ -45,11 +45,6 @@
                                             <option value="{{$category->id}}">{{$category->category}}</option>
                                             @endforeach
                                         </select>
-                                        {{-- <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="description"
-                                            name="description"
-                                            placeholder="Escriba una descripción"> --}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,14 +71,6 @@
                                             </div>
                                         </div>
                                     </td>
-                                    {{-- <td>
-                                        <div class="d-flex gap-2 align-items-center">
-                                            <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="radio" id="act" name="status" value=1 checked>
-                                            <label for="act">ACTIVO</label>
-                                            <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="radio" id="inact" name="status" value=0>
-                                            <label for="inact">INACTIVO</label>
-                                        </div>
-                                    </td> --}}
                                 </tr>
                             </table>
                         </div>

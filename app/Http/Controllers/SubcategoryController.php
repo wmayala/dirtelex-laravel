@@ -24,7 +24,7 @@ class SubcategoryController extends Controller
         else
         {
             $subcategories=Subcategory::get();
-            $cat=$subcategories->category;
+            //$cat=$subcategories->category;
             return view('subcategories.index')
                 ->with('subcategories', $subcategories);
         }
@@ -47,7 +47,6 @@ class SubcategoryController extends Controller
         $subcategories=new Subcategory([
             'subcategory'=>$request->subcategory,
             'description'=>$request->description,
-            //'category_id'=>$request->category_id,
             'status'=>$request->status,
         ]);
         $subcategories->category()->associate(Category::find($request->category_id));
@@ -63,7 +62,7 @@ class SubcategoryController extends Controller
      */
     public function show(string $id)
     {
-        $subcategory = Subcategory::find($id);
+        $subcategory=Subcategory::find($id);
         return view('subcategories.show', compact('subcategory'));
     }
 
@@ -72,8 +71,9 @@ class SubcategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $subcategory = Subcategory::find($id);
-        return view('subcategories.update', compact('subcategory'));
+        $subcategory=Subcategory::find($id);
+        $categories=Category::get();
+        return view('subcategories.update', compact('subcategory','categories'));
     }
 
     /**
@@ -81,7 +81,18 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $subcategory=Subcategory::find($id);
+        
+        $subcategory->update([
+            $subcategory->subcategory=$request->subcategory,
+            $subcategory->description=$request->description,
+            $subcategory->category->category=$request->category_id,
+            $subcategory->status=$request->status,
+        ]);
+
+        return redirect()
+            ->route('subcategory.index')
+            ->with('success','Subcategoría actualizada correctamente');
     }
 
     /**
@@ -89,6 +100,10 @@ class SubcategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $subcategory=Subcategory::find($id);
+        $subcategory->delete();
+        return redirect()
+            ->route('subcategory.index')
+            ->with('danger','Subcategoría eliminada correctamente');
     }
 }

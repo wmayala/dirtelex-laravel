@@ -40,6 +40,18 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td><label for="category_id" class="uppercase">Categoría:</label></td>
+                                    <td>
+                                        <select name="category_id" id="category_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                            {{-- <option >Seleccione una categoría</option> --}}
+                                            <option  selected>{{$subcategory->category->category}}</option>
+                                            @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->category}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td><label for="status" class="uppercase">Estado:</label></td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -59,7 +71,7 @@
                                                     id="inact"
                                                     name="status"
                                                     value="0"
-                                                    {{$category->status===0?'checked':''}}>
+                                                    {{$subcategory->status===0?'checked':''}}>
                                                 <label for="inact">INACTIVO</label>
                                             </div>
                                         </div>
@@ -72,7 +84,7 @@
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
                                 <strong>Actualizar</strong>
                             </button>
-                            <a href="{{route('category.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
+                            <a href="{{route('subcategory.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
                                 <strong>Cancelar</strong>
                             </a>
                         </div>
