@@ -18,6 +18,11 @@ class Category extends Model
 
     public function subcategory()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->hasMany(Subcategory::class, 'category_id');
+    }
+
+    public function institution()
+    {
+        return $this->hasMany(Institution::class, 'category_id');
     }
 }

@@ -12,8 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('institutions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('institution');
+            $table->string('acronym');
+            $table->string('description')->nullable();
+            $table->boolean('status')->default(1);;
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('subcategory_id');
             $table->timestamps();
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+
+            $table->foreign('subcategory_id')
+                ->references('id')
+                ->on('subcategories')
+                ->onDelete('cascade');
         });
     }
 

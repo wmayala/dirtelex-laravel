@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Institution;
+use App\Models\Category;
+use App\Models\Subcategory;
+
+
+class InstitutionController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        if($request)
+        {
+            $search=$request->input('search');
+            $institutions=Institution::where('institution','like','%'.$search.'%')->get();
+            return view('institutions.index')
+                ->with('institutions', $institutions);
+        }
+        else
+        {
+            $institutions=Institution::get();
+            return view('institutions.index')
+                ->with('institutions', $institutions);
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $categories=Category::get();
+        $subcategories=Subcategory::get();
+        return view('institutions.create')
+            ->with('categories', $categories)
+            ->with('subcategories', $subcategories);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $institutions=new Institution([
+            'institution'=>$request->institution,
+            'acronym'=>$request->acronym,
+            'description'=>$request->description,
+            'status'=>$request->status,
+        ]);
+        $institutions->category()->associate(Category::find($request->category_id));
+        $institutions->subcategory()->associate(Subcategory::find($request->subcategory_id));
+
+        $institutions->save();
+
+        return redirect()->route('institution.index')
+            ->with('success','Institución creada correctamente');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}

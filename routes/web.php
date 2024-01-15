@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\InstitutionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,6 +15,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    // RUTAS PARA CONTACTOS
+    Route::view('/contact/index', 'contacts.index')->name('contact.index');
+
+    // RUTAS PARA INSTITUCIONES
+    Route::get('/institution/index',[InstitutionController::class, 'index'])->name('institution.index');
+    Route::get('/institution/create',[InstitutionController::class, 'create'])->name('institution.create');
+    Route::post('/institution', [InstitutionController::class, 'store'])->name('institution.store');
 
     // RUTAS PARA CATEGORIAS
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
@@ -32,6 +40,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
     Route::put('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::delete('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.delete');
+
+    // RUTAS PARA DIVISIONES
+    Route::view('/division/index', 'divisions.index')->name('division.index');
+
+    // RUTAS PARA USUARIOS
+    Route::view('/user/index', 'users.index')->name('user.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

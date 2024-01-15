@@ -1,29 +1,39 @@
 <x-app-layout>
-    @section('title','Agregar subcategoría')
+    @section('title','Agregar institución')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="row p-3 text-gray-900">
                     <div class="fs-3">
-                        {{ __("AGREGAR SUBCATEGORÍA") }}
+                        {{ __("AGREGAR INSTITUCIÓN") }}
                     </div>
                 </div>
 
                 <div class="row p-5">
-                    <form action="{{route('subcategory.store')}}" method="POST">
+                    <form action="{{route('institution.store')}}" method="POST">
                         @csrf
                         <div class="flex justify-center align-center">
                             <table class="col-6">
                                 <tr>
-                                    <td><label for="subcategory" class="uppercase">Nombre:</label></td>
+                                    <td><label for="institution" class="uppercase">Nombre:</label></td>
                                     <td>
                                         <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                             type="text"
-                                            id="subcategory"
-                                            name="subcategory"
-                                            placeholder="Escriba el nombre de la subcategoría"
+                                            id="institution"
+                                            name="institution"
+                                            placeholder="Escriba el nombre de la institución"
                                             required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="acronym" class="uppercase">Siglas:</label></td>
+                                    <td>
+                                        <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="acronym"
+                                            name="acronym"
+                                            placeholder="Escriba una abreviatura o siglas">
                                     </td>
                                 </tr>
                                 <tr>
@@ -42,7 +52,18 @@
                                         <select name="category_id" id="category_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
                                             <option selected>Seleccione una categoría</option>
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->category}}</option>
+                                                <option value="{{$category->id}}">{{$category->category}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="subcategory_id" class="uppercase">Subcategoría:</label></td>
+                                    <td>
+                                        <select name="subcategory_id" id="subcategory_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                            <option selected>Seleccione una subcategoría</option>
+                                            @foreach($subcategories as $subcategory)
+                                                <option value="{{$subcategory->id}}">{{$subcategory->subcategory}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -60,7 +81,6 @@
                                                     checked>
                                                 <label for="act">ACTIVO</label>
                                             </div>
-
                                             <div class="col-6 d-flex align-items-center gap-2">
                                                 <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
                                                     type="radio"
@@ -78,24 +98,12 @@
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
                                 <strong>Guardar</strong>
                             </button>
-
-                            <a href="{{route('subcategory.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
+                            <a href="{{route('institution.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
                                 <strong>Cancelar</strong>
                             </a>
                         </div>
-
-
-
                     </form>
-
                 </div>
-
-
-
-
-
-
-
              </div>
          </div>
      </div>

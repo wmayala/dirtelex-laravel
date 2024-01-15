@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subcategories', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('subcategory');
             $table->string('description')->nullable();
             $table->boolean('status')->default(1);
-            $table->integer('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('category_id')
