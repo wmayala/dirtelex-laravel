@@ -67,15 +67,19 @@ class InstitutionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $institution=Institution::find($id);
+        return view('institutions.show', compact('institution'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource.       ************ FALTA MODIFICAR LAS VISTAS **********
      */
     public function edit(string $id)
     {
-        //
+        $institution=Institution::find($id);
+        $categories=Category::get();
+        $subcategories=Subcategory::get();
+        return view('institutions.update', compact('institution','categories','subcategories'));
     }
 
     /**

@@ -58,7 +58,7 @@
                                     @if($institutions)
                                         @foreach($institutions as $institution)
                                         <tr>
-                                            <td class="col-3">{{$institution->institution}}</td>
+                                            <td class="col-2">{{$institution->institution}}</td>
                                             <td class="text-center">{{$institution->acronym}}</td>
                                             <td class="col-3">{{$institution->description?$institution->description:'No definida'}}</td>
                                             <td class="col-3">{{$institution->category->category}}</td>
@@ -66,7 +66,7 @@
                                             <td class="text-center">
                                                 <div class="row">
                                                     <div class="col-4">
-                                                        <a href="{{route('subcategory.show', $institution->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{route('institution.show', $institution->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-4">
                                                         <a href="{{route('subcategory.edit', $institution->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

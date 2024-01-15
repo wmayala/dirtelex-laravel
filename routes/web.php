@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/institution/index',[InstitutionController::class, 'index'])->name('institution.index');
     Route::get('/institution/create',[InstitutionController::class, 'create'])->name('institution.create');
     Route::post('/institution', [InstitutionController::class, 'store'])->name('institution.store');
+    Route::get('/institution/show/{id}', [InstitutionController::class, 'show'])->name('institution.show');
+    Route::get('/institution/edit/{id}', [InstitutionController::class, 'edit'])->name('institution.edit');
+    Route::get('/institution/update/{id}', [InstitutionController::class, 'update'])->name('institution.update');
 
     // RUTAS PARA CATEGORIAS
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
