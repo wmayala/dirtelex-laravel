@@ -69,11 +69,11 @@
                                                         <a href="{{route('institution.show', $institution->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-4">
-                                                        <a href="{{route('subcategory.edit', $institution->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                        <a href="{{route('institution.edit', $institution->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-4">
 
-                                                        <form action="{{ route('subcategory.delete', $institution->id) }}" method="post">
+                                                        <form action="{{ route('institution.delete', $institution->id) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" >

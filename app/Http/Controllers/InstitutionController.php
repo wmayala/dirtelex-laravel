@@ -47,6 +47,7 @@ class InstitutionController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $institutions=new Institution([
             'institution'=>$request->institution,
             'acronym'=>$request->acronym,
@@ -87,7 +88,20 @@ class InstitutionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $institution=Institution::find($id);
+
+        $institution->update([
+            $institution->institution=$request->institution,
+            $institution->acronym=$request->acronym,
+            $institution->description=$request->description,
+            $institution->category->category=$request->category_id,
+            $institution->subcategory->subcategory=$request->subcategory_id,
+            $institution->status=$request->status,
+        ]);
+
+        return redirect()
+            ->route('institution.index')
+            ->with('success','Institución actualizada correctamente');
     }
 
     /**
@@ -95,6 +109,10 @@ class InstitutionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $institution=Institution::find($id);
+        $institution->delete();
+        return redirect()
+            ->route('institution.index')
+            ->with('danger','Institución eliminada correctamente');
     }
 }

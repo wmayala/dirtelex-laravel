@@ -12,38 +12,45 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Inicio') }}
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="d-flex gap-1">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <span>{{ __('Inicio') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
-                        {{ __('Contactos') }}
+                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')" class="d-flex gap-1">
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                        <span>{{ __('Contactos') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('institution.index')" :active="request()->routeIs('institution.index')">
-                        {{ __('Instituciones') }}
+                    <x-nav-link :href="route('institution.index')" :active="request()->routeIs('institution.index')" class="d-flex gap-1">
+                        <i class="fa fa-building" aria-hidden="true"></i>
+                        <span>{{ __('Instituciones') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
-                        {{ __('Categorías') }}
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" class="d-flex gap-1">
+                        <i class="fa fa-th-large" aria-hidden="true"></i>
+                        <span>{{ __('Categorías') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('subcategory.index')" :active="request()->routeIs('subcategory.index')">
-                        {{ __('Subcategorías') }}
+                    <x-nav-link :href="route('subcategory.index')" :active="request()->routeIs('subcategory.index')" class="d-flex gap-1">
+                        <i class="fa fa-th" aria-hidden="true"></i>
+                        <span>{{ __('Subcategorías') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('division.index')" :active="request()->routeIs('division.index')">
-                        {{ __('Divisiones') }}
+                    <x-nav-link :href="route('division.index')" :active="request()->routeIs('division.index')" class="d-flex gap-1">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <span>{{ __('Divisiones') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        {{ __('Usuarios') }}
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')" class="d-flex gap-1">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span></span>{{ __('Usuarios') }}</span>
                     </x-nav-link>
                 </div>
             </div>

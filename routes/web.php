@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/institution', [InstitutionController::class, 'store'])->name('institution.store');
     Route::get('/institution/show/{id}', [InstitutionController::class, 'show'])->name('institution.show');
     Route::get('/institution/edit/{id}', [InstitutionController::class, 'edit'])->name('institution.edit');
-    Route::get('/institution/update/{id}', [InstitutionController::class, 'update'])->name('institution.update');
+    Route::put('/institution/update/{id}', [InstitutionController::class, 'update'])->name('institution.update');
+    Route::delete('/institution/delete/{id}', [InstitutionController::class, 'destroy'])->name('institution.delete');
 
     // RUTAS PARA CATEGORIAS
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');

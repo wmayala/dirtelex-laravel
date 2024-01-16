@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('institution');
-            $table->string('acronym');
+            $table->string('acronym')->nullable();
             $table->string('description')->nullable();
             $table->boolean('status')->default(1);;
             $table->unsignedBigInteger('category_id');

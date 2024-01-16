@@ -57,8 +57,8 @@
                                         @foreach($subcategories as $subcategory)
                                         <tr>
                                             <td class="col-3">{{$subcategory->subcategory}}</td>
-                                            <td class="col-3">{{$subcategory->description?$subcategory->description:'No definida'}}</td>
                                             <td class="col-4">{{$subcategory->category->category}}</td>
+                                            <td class="col-3">{{$subcategory->description?$subcategory->description:'No definida'}}</td>
                                             <td class="text-center">
                                                 <div class="row">
                                                     <div class="col-4">
