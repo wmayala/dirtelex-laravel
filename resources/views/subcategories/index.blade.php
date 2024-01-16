@@ -46,8 +46,8 @@
                                 <thead>
                                     <tr>
                                         <th>NOMBRE</th>
-                                        <th>DESCRIPCIÓN</th>
                                         <th>CATEGORÍA</th>
+                                        <th>DESCRIPCIÓN</th>
                                         <th class="text-center">ACCIONES</th>
                                         <th class="text-center">ESTADO</th>
                                     </tr>

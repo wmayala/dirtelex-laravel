@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->boolean('status')->default(1);;
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')

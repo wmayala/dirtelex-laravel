@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\DivisionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -46,7 +47,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.delete');
 
     // RUTAS PARA DIVISIONES
-    Route::view('/division/index', 'divisions.index')->name('division.index');
+    Route::get('/division/index', [DivisionController::class, 'index'])->name('division.index');
+    Route::get('/division/create', [DivisionController::class, 'create'])->name('division.create');
+    Route::post('/division', [DivisionController::class, 'store'])->name('division.store');
+    Route::get('/division/show/{id}', [DivisionController::class, 'show'])->name('division.show');
+    Route::get('/division/edit/{id}', [DivisionController::class, 'edit'])->name('division.edit');
+    Route::put('/division/update/{id}', [DivisionController::class, 'update'])->name('division.update');
+    Route::delete('/division/delete/{id}', [DivisionController::class, 'destroy'])->name('division.delete');
 
     // RUTAS PARA USUARIOS
     Route::view('/user/index', 'users.index')->name('user.index');

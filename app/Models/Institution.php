@@ -27,4 +27,9 @@ class Institution extends Model
     {
         return $this->belongsTo(Subcategory::class, 'subcategory_id');
     }
+
+    public function division()
+    {
+        return $this->hasMany(Division::class, 'institution_id');
+    }
 }

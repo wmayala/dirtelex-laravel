@@ -62,7 +62,7 @@
                                             <td class="text-center">{{$institution->acronym}}</td>
                                             <td class="col-3">{{$institution->description?$institution->description:'No definida'}}</td>
                                             <td class="col-3">{{$institution->category->category}}</td>
-                                            <td class="col">{{$institution->subcategory->subcategory}}</td>
+                                            <td class="col">{{$institution->subcategory->subcategory?$institution->subcategory->subcategory:'No posee subcategoría'}}</td>
                                             <td class="text-center">
                                                 <div class="row">
                                                     <div class="col-4">

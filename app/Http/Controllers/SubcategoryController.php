@@ -24,7 +24,6 @@ class SubcategoryController extends Controller
         else
         {
             $subcategories=Subcategory::get();
-            //$cat=$subcategories->category;
             return view('subcategories.index')
                 ->with('subcategories', $subcategories);
         }
@@ -82,7 +81,7 @@ class SubcategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $subcategory=Subcategory::find($id);
-        
+
         $subcategory->update([
             $subcategory->subcategory=$request->subcategory,
             $subcategory->description=$request->description,
