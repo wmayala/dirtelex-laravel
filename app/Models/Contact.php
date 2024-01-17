@@ -5,18 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Institution extends Model
+class Contact extends Model
 {
     use HasFactory;
 
     protected $fillable=[
-        'institution',
-        'acronym',
-        'description',
+        'institution_id',
         'category_id',
         'subcategory_id',
+        'division_id',
+        'contact',
+        'position',
+        'code',
+        'phone',
+        'extension',
+        'mobile',
+        'fax',
+        'specialFeature',
+        'clarification',
+        'address',
+        'typeContact',
+        'language',
         'status',
     ];
+
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class, 'institution_id');
+    }
 
     public function category()
     {
@@ -30,11 +46,6 @@ class Institution extends Model
 
     public function division()
     {
-        return $this->hasMany(Division::class, 'institution_id');
-    }
-
-    public function contact()
-    {
-        return $this->hasMany(Contact::class, 'institution_id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
 }

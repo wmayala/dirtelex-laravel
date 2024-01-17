@@ -25,4 +25,9 @@ class Category extends Model
     {
         return $this->hasMany(Institution::class, 'category_id');
     }
+
+    public function contact()
+    {
+        return $this->hasMany(Contact::class, 'category_id');
+    }
 }

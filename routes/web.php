@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,9 +18,15 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     // RUTAS PARA CONTACTOS
-    Route::view('/contact/index', 'contacts.index')->name('contact.index');
+    Route::get('/contact/index',[ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contact/create',[ContactController::class, 'create'])->name('contact.create');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact/show/{id}', [ContactController::class, 'show'])->name('contact.show');
+    Route::get('/contact/edit/{id}', [ContactController::class, 'edit'])->name('contact.edit');
+    Route::put('/contact/update/{id}', [ContactController::class, 'update'])->name('contact.update');
+    Route::delete('/contact/delete/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
 
-    // RUTAS PARA INSTITUCIONES
+    //RUTAS PARA INSTITUCIONES
     Route::get('/institution/index',[InstitutionController::class, 'index'])->name('institution.index');
     Route::get('/institution/create',[InstitutionController::class, 'create'])->name('institution.create');
     Route::post('/institution', [InstitutionController::class, 'store'])->name('institution.store');

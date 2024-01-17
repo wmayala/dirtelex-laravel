@@ -25,4 +25,9 @@ class Subcategory extends Model
     {
         return $this->hasMany(Institution::class, 'subcategory_id');
     }
+
+    public function contact()
+    {
+        return $this->hasMany(Contact::class, 'subcategory_id');
+    }
 }

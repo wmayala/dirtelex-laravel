@@ -20,4 +20,9 @@ class Division extends Model
     {
         return $this->belongsTo(Institution::class, 'institution_id');
     }
+
+    public function contact()
+    {
+        return $this->hasMany(Contact::class, 'division_id');
+    }
 }
