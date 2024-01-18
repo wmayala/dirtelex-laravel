@@ -64,26 +64,26 @@
                                                 <span>{{$contact->position}}</span>
                                             </td>
                                             <td>
-                                                <span>({{$contact->code}})</span><span>{{$contact->phone}}</span><br>
+                                                <span>({{$contact->code}}) </span><span>{{$contact->phone}}</span><br>
                                                 <span>Cel.: {{$contact->mobile}}</span><br>
                                                 <span>Ext.: {{$contact->extension}}</span><br>
                                                 <span>Fax: {{$contact->fax}}</span>
                                             </td>
                                             <td>{{$contact->email}}</td>
                                             <td>{{$contact->institution->institution}}</td>
-                                            <td class="col-3">{{$contact->category->category}}</td>
-                                            <td class="col">{{$contact->subcategory->subcategory}}</td>
+                                            <td>{{$contact->institution->category->category}}</td>
+                                            <td>{{$contact->institution->subcategory->subcategory}}</td>
                                             <td class="text-center">
                                                 <div class="row">
                                                     <div class="col-4">
-                                                        <a href="{{route('institution.show', $institution->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{route('institution.show', $contact->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-4">
-                                                        <a href="{{route('institution.edit', $institution->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                        <a href="{{route('institution.edit', $contact->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     </div>
                                                     <div class="col-4">
 
-                                                        <form action="{{ route('institution.delete', $institution->id) }}" method="post">
+                                                        <form action="{{ route('institution.delete', $contact->id) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" >
@@ -94,7 +94,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                @if($institution->status==1)
+                                                @if($contact->status==1)
                                                     <span class="badge bg-success w-100">ACTIVO</span>
                                                 @else
                                                     <span class="badge bg-danger w-100">INACTIVO</span>

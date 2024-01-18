@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Institution;
+use App\Models\Category;
+use App\Models\Subcategory;
+use App\Models\Division;
 
 class ContactController extends Controller
 {
@@ -32,11 +36,11 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $categories=Category::get();                            /////////////// TERMINAR FUNCIONES EN CONTACTO
-        $subcategories=Subcategory::get();
-        return view('institutions.create')
-            ->with('categories', $categories)
-            ->with('subcategories', $subcategories);
+        $institutions=Institution::get();                            /////////////// TERMINAR FUNCIONES EN CONTACTO
+        $divisions=Division::get();
+        return view('contacts.create')
+            ->with('institutions', $institutions)
+            ->with('divisions', $divisions);
     }
 
     /**
@@ -44,7 +48,31 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contacts=new Contact([
+            'contact'=>$request->contact,
+            'position'=>$request->position,
+            'code'=>$request->code,
+            'phone'=>$request->phone,
+            'extension'=>$request->extension,
+            'mobile'=>$request->mobile,
+            'fax'=>$request->fax,
+            'email'=>$request->email,
+            'specialFeature'=>$request->specialFeature,
+            'clarification'=>$request->clarification,
+            'address'=>$request->address,
+            'typeContact'=>$request->typeContact,
+            'language'=>$request->language,
+            'status'=>$request->status,
+        ]);
+        $contacts->category()->associate(Category::find($request->category_id));
+        $contacts->subcategory()->associate(Subcategory::find($request->subcategory_id));
+        $contacts->division()->associate(Division::find($request->division_id));
+        $contacts->institution()->associate(Institution::find($request->institution_id));
+
+        $contacts->save();
+
+        return redirect()->route('contact.index')
+            ->with('success','Contacto creado correctamente');
     }
 
     /**

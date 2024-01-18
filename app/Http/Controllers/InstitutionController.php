@@ -47,7 +47,6 @@ class InstitutionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $institutions=new Institution([
             'institution'=>$request->institution,
             'acronym'=>$request->acronym,

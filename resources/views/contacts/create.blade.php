@@ -13,8 +13,8 @@
                 <div class="row p-5">
                     <form action="{{route('contact.store')}}" method="POST">
                         @csrf
-                        <div class="flex justify-center align-center">
-                            <table class="col-6">
+                        <div class="flex justify-center align-center text-center">
+                            <table class="col-6 w-75">
                                 <tr>
                                     <td><label for="institution_id" class="uppercase">Institución:</label></td>
                                     <td>
@@ -61,37 +61,41 @@
                                 <tr>
                                     <td><label for="phone" class="uppercase">Teléfono:</label></td>
                                     <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="code"
-                                            name="code"
-                                            placeholder="Código de país o área">
-                                    </td>
-                                    <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="phone"
-                                            name="phone"
-                                            placeholder="Número telefónico">
-                                    </td>
-                                    <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="extension"
-                                            name="extension"
-                                            placeholder="Extensión telefónica">
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="code"
+                                                name="code"
+                                                placeholder="Código de país o área">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="phone"
+                                                name="phone"
+                                                placeholder="Número telefónico">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="extension"
+                                                name="extension"
+                                                placeholder="Extensión telefónica">
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="mobile"
+                                                name="mobile"
+                                                placeholder="Número telefónico móvil">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="fax"
+                                                name="fax"
+                                                placeholder="Número de fax">
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><label for="mobile" class="uppercase">Móvil:</label></td>
-                                    <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="mobile"
-                                            name="mobile"
-                                            placeholder="Número telefónico móvil">
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <td><label for="email" class="uppercase">Correo electrónico:</label></td>
                                     <td>
@@ -102,34 +106,24 @@
                                             placeholder="Correo electrónico">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><label for="fax" class="uppercase">Fax:</label></td>
-                                    <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="fax"
-                                            name="fax"
-                                            placeholder="Número de fax">
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <td><label for="specialFeature" class="uppercase">Característica especial:</label></td>
                                     <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
+                                        <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                             id="specialFeature"
                                             name="specialFeature"
-                                            placeholder="Alguna característica especial">
+                                            placeholder="Alguna característica especial"></textarea>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label for="clarification" class="uppercase">Aclaración relevante:</label></td>
                                     <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
+
+                                        <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                             id="clarification"
                                             name="clarification"
-                                            placeholder="Alguna característica especial">
+                                            placeholder="Alguna característica especial"></textarea>
                                     </td>
                                 </tr>
                                 <tr>

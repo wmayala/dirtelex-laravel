@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('institution_id');
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->unsignedBigInteger('division_id')->nullable();
             $table->string('contact');
             $table->string('position')->nullable();
