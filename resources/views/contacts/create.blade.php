@@ -13,7 +13,7 @@
                 <div class="row p-5">
                     <form action="{{route('contact.store')}}" method="POST">
                         @csrf
-                        <div class="flex justify-center align-center text-center">
+                        <div class="flex justify-center align-center">
                             <table class="col-6 w-75">
                                 <tr>
                                     <td><label for="institution_id" class="uppercase">Institución:</label></td>
