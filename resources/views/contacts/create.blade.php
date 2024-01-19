@@ -66,7 +66,7 @@
                                                 type="text"
                                                 id="code"
                                                 name="code"
-                                                placeholder="Código de país o área">
+                                                placeholder="Código de país y área">
 
                                             <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                                 type="text"

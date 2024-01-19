@@ -70,7 +70,7 @@ class ContactController extends Controller
         $contacts->institution()->associate(Institution::find($request->institution_id));
 
         $contacts->save();
-
+        //dd($contacts);
         return redirect()->route('contact.index')
             ->with('success','Contacto creado correctamente');
     }
@@ -80,7 +80,8 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contact=Contact::find($id);
+        return view('contacts.show', compact('contact'));
     }
 
     /**

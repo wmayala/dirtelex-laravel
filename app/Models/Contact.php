@@ -21,6 +21,7 @@ class Contact extends Model
         'extension',
         'mobile',
         'fax',
+        'email',
         'specialFeature',
         'clarification',
         'address',
