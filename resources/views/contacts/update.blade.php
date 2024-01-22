@@ -1,74 +1,179 @@
 <x-app-layout>
-    @section('title','Actualizar institutción')
+    @section('title','Actualizar contacto')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="row p-3 text-gray-900">
                     <div class="fs-3">
-                        {{ __("ACTUALIZAR INSTITUCIÓN") }}
+                        {{ __("ACTUALIZAR CONTACTO") }}
                     </div>
                 </div>
 
                 <div class="row p-5">
-                    <form action="{{route('institution.update',$institution->id)}}" method="POST">
+                    <form action="{{route('contact.update',$contact->id)}}" method="POST">
                         @csrf @method('PUT')
                         <div class="flex justify-center align-center">
-                            <table class="col-6">
+                            <table class="col-6 w-75">
                                 <tr>
-                                    <td><label for="institution" class="uppercase">Nombre:</label></td>
+                                    <td><label for="institution_id" class="uppercase">Institución:</label></td>
                                     <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="institution"
-                                            name="institution"
-                                            value="{{$institution->institution}}">
+                                        <select name="institution_id" id="institution_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                            <option selected>{{$contact->institution->institution}}</option>
+                                            @foreach($institutions as $institution)
+                                                <option value="{{$institution->id}}">{{$institution->institution}}</option>
+                                            @endforeach
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="acronym" class="uppercase">Siglas:</label></td>
+                                    <td><label for="division_id" class="uppercase">División:</label></td>
                                     <td>
-                                        <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="acronym"
-                                            name="acronym"
-                                            value="{{$institution->acronym}}">
+                                        <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                            <option selected>{{$contact->division->division}}</option>
+                                            @foreach($divisions as $division)
+                                                <option value="{{$division->id}}">{{$division->division}}</option>
+                                            @endforeach
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="description" class="uppercase">Descripción:</label></td>
+                                    <td><label for="contact" class="uppercase">Nombre:</label></td>
+                                    <td>
+                                        <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="contact"
+                                            name="contact"
+                                            value="{{$contact->contact}}"
+                                            required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="position" class="uppercase">Cargo o área del contacto:</label></td>
+                                    <td>
+                                        <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="position"
+                                            name="position"
+                                            value="{{$contact->position}}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="phone" class="uppercase">Teléfono:</label></td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="code"
+                                                name="code"
+                                                value="{{$contact->code}}">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="phone"
+                                                name="phone"
+                                                value="{{$contact->phone}}">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="extension"
+                                                name="extension"
+                                                value="{{$contact->extension}}">
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="mobile"
+                                                name="mobile"
+                                                value="{{$contact->mobile}}">
+
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="text"
+                                                id="fax"
+                                                name="fax"
+                                                value="{{$contact->fax}}">
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><label for="email" class="uppercase">Correo electrónico:</label></td>
                                     <td>
                                         <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                            type="text"
-                                            id="description"
-                                            name="description"
-                                            @if($institution->description)
-                                                value="{{$institution->description}}"
-                                            @else
-                                                value="No definida"
-                                            @endif>
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value="{{$contact->email}}">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><label for="specialFeature" class="uppercase">Característica especial:</label></td>
+                                    <td>
+                                        <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            id="specialFeature"
+                                            name="specialFeature"
+                                        >{{$contact->specialFeature}}</textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="category_id" class="uppercase">Categoría:</label></td>
+                                    <td><label for="clarification" class="uppercase">Aclaración relevante:</label></td>
                                     <td>
-                                        <select name="category_id" id="category_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                            <option  selected>{{$institution->category->category}}</option>
-                                            @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->category}}</option>
-                                            @endforeach
-                                        </select>
+
+                                        <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            id="clarification"
+                                            name="clarification"
+                                            >{{$contact->clarification}}</textarea>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="subcategory_id" class="uppercase">Subcategoría:</label></td>
+                                    <td><label for="typeContact" class="uppercase">Tipo de contacto:</label></td>
                                     <td>
-                                        <select name="subcategory_id" id="subcategory_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                            <option  selected>{{$institution->subcategory->subcategory}}</option>
-                                            @foreach($subcategories as $subcategory)
-                                            <option value="{{$subcategory->id}}">{{$subcategory->subcategory}}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="d-flex align-items-center">
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="person"
+                                                    name="typeContact"
+                                                    value="1"
+                                                    {{$contact->typeContact===1?'checked':''}}>
+                                                <label for="act">PERSONA</label>
+                                            </div>
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="area"
+                                                    name="typeContact"
+                                                    value="0"
+                                                    {{$contact->typeContact===0?'checked':''}}>
+                                                <label for="inact">ÁREA</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="language" class="uppercase">Idioma:</label></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="es"
+                                                    name="language"
+                                                    value="1"
+                                                    {{$contact->language===1?'checked':''}}>
+                                                <label for="es">ESPAÑOL</label>
+                                            </div>
+                                            <div class="col-6 d-flex align-items-center gap-2">
+                                                <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                    type="radio"
+                                                    id="en"
+                                                    name="language"
+                                                    value="0"
+                                                    {{$contact->language==0?'checked':''}}>
+                                                <label for="en">INGLÉS</label>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,17 +186,16 @@
                                                     id="act"
                                                     name="status"
                                                     value="1"
-                                                    {{$institution->status===1?'checked':''}}>
+                                                    {{$contact->status===1?'checked':''}}>
                                                 <label for="act">ACTIVO</label>
                                             </div>
-
                                             <div class="col-6 d-flex align-items-center gap-2">
                                                 <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
                                                     type="radio"
                                                     id="inact"
                                                     name="status"
                                                     value="0"
-                                                    {{$institution->status===0?'checked':''}}>
+                                                    {{$contact->status===0?'checked':''}}>
                                                 <label for="inact">INACTIVO</label>
                                             </div>
                                         </div>
@@ -99,18 +203,17 @@
                                 </tr>
                             </table>
                         </div>
-
                         <div class="text-center">
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
-                                <strong>Actualizar</strong>
+                                <strong>Guardar</strong>
                             </button>
-                            <a href="{{route('institution.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
+                            <a href="{{route('contact.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
                                 <strong>Cancelar</strong>
                             </a>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+             </div>
+         </div>
+     </div>
+ </x-app-layout>

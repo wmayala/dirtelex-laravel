@@ -5,65 +5,171 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="row p-3 text-gray-900">
                     <div class="fs-3">
-                        {{ __("DETALLES")}}
+                        {{ __("DETALLES") }}
                     </div>
                 </div>
                 <div class="row p-5">
                     <div class="flex justify-center align-center">
-                        <table class="col-6">
+                        <table class="col-6 w-75">
                             <tr>
-                                <td><label for="institution" class="uppercase">Nombre:</label></td>
+                                <td><label for="institution_id" class="uppercase">Institución:</label></td>
                                 <td>
                                     <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                         type="text"
-                                        id="institution"
-                                        name="institution"
-                                        value="{{$institution->institution}}"
+                                        id="institution_id"
+                                        name="institution_id"
+                                        value="{{$contact->institution->institution}}"
                                         disabled>
+                                    {{-- <select name="institution_id" id="institution_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                        <option selected>{{$contact->institution->institution}}</option>
+                                        @foreach($institutions as $institution)
+                                            <option value="{{$institution->id}}">{{$institution->institution}}</option>
+                                        @endforeach
+                                    </select> --}}
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="acronym" class="uppercase">Siglas:</label></td>
+                                <td><label for="division_id" class="uppercase">División:</label></td>
                                 <td>
                                     <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                         type="text"
-                                        id="acronym"
-                                        name="acronym"
-                                        value="{{$institution->acronym}}"
+                                        id="division_id"
+                                        name="division_id"
+                                        value="{{$contact->division->division}}"
+                                        disabled>
+                                    {{-- <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                        <option selected>{{$contact->division->division}}</option>
+                                        @foreach($divisions as $division)
+                                            <option value="{{$division->id}}">{{$division->division}}</option>
+                                        @endforeach
+                                    </select> --}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="contact" class="uppercase">Nombre:</label></td>
+                                <td>
+                                    <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                        type="text"
+                                        id="contact"
+                                        name="contact"
+                                        value="{{$contact->contact}}"
                                         disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="description" class="uppercase">Descripción:</label></td>
+                                <td><label for="position" class="uppercase">Cargo o área del contacto:</label></td>
                                 <td>
-                                    <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                    <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                         type="text"
-                                        id="description"
-                                        name="description"
-                                        value="{{$institution->description?$institution->description:'No definida'}}"
+                                        id="position"
+                                        name="position"
+                                        value="{{$contact->position}}"
                                         disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="category_id" class="uppercase">Categoría:</label></td>
+                                <td><label for="phone" class="uppercase">Teléfono:</label></td>
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
+                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="code"
+                                            name="code"
+                                            value="{{$contact->code}}"
+                                            disabled>
+
+                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="phone"
+                                            name="phone"
+                                            value="{{$contact->phone}}"
+                                            disabled>
+
+                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="extension"
+                                            name="extension"
+                                            value="{{$contact->extension}}"
+                                            disabled>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
+                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="mobile"
+                                            name="mobile"
+                                            value="{{$contact->mobile}}"
+                                            disabled>
+
+                                        <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            type="text"
+                                            id="fax"
+                                            name="fax"
+                                            value="{{$contact->fax}}"
+                                            disabled>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="email" class="uppercase">Correo electrónico:</label></td>
                                 <td>
                                     <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                        type="text"
-                                        id="category_id"
-                                        name="category_id"
-                                        value="{{$institution->category->category}}"
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value="{{$contact->email}}"
                                         disabled>
                                 </td>
                             </tr>
+
                             <tr>
-                                <td><label for="subcategory_id" class="uppercase">Categoría:</label></td>
+                                <td><label for="specialFeature" class="uppercase">Característica especial:</label></td>
                                 <td>
-                                    <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
-                                        type="text"
-                                        id="subcategory_id"
-                                        name="subcategory_id"
-                                        value="{{$institution->subcategory->subcategory}}"
-                                        disabled>
+                                    <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                        id="specialFeature"
+                                        name="specialFeature"
+                                        disabled
+                                    >{{$contact->specialFeature}}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="clarification" class="uppercase">Aclaración relevante:</label></td>
+                                <td>
+
+                                    <textarea class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                        id="clarification"
+                                        name="clarification"
+                                        disabled
+                                    >{{$contact->clarification}}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="typeContact" class="uppercase">Tipo de contacto:</label></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-6 d-flex align-items-center gap-2">
+                                            <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                type="text"
+                                                id="person"
+                                                name="typeContact"
+                                                value="{{$contact->typeContact===1?'PERSONA':'ÁREA'}}">
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="language" class="uppercase">Idioma:</label></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-6 d-flex align-items-center gap-2">
+                                            <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                type="text"
+                                                id="es"
+                                                name="language"
+                                                value="{{$contact->language===1?'ESPAÑOL':'INGLÉS'}}">
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -73,10 +179,9 @@
                                         <div class="col-6 d-flex align-items-center gap-2">
                                             <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
                                                 type="text"
-                                                id="status"
+                                                id="act"
                                                 name="status"
-                                                value="{{$institution->status===1?'ACTIVO':'INACTIVO'}}"
-                                                disabled>
+                                                value="{{$contact->status===1?'ACTIVO':'INACTIVO'}}">
                                         </div>
                                     </div>
                                 </td>
@@ -84,12 +189,12 @@
                         </table>
                     </div>
                     <div class="text-center">
-                        <a href="{{route('institution.index')}}" class="btn btn-secondary mt-3 text-sm uppercase col-3">
+                        <a href="{{route('contact.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
                             <strong><< Regresar</strong>
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+             </div>
+         </div>
+     </div>
+ </x-app-layout>

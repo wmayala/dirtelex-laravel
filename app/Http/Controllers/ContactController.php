@@ -36,7 +36,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $institutions=Institution::get();                            /////////////// TERMINAR FUNCIONES EN CONTACTO
+        $institutions=Institution::get();
         $divisions=Division::get();
         return view('contacts.create')
             ->with('institutions', $institutions)
@@ -89,7 +89,10 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $contact=Contact::find($id);
+        $institutions=Institution::get();
+        $divisions=Division::get();
+        return view('contacts.update', compact('contact','institutions','divisions'));
     }
 
     /**
@@ -97,7 +100,29 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $contact=Contact::find($id);
+
+        $contact->update([
+            $contact->institution->institution=$request->institution_id,
+            $contact->division->division=$request->division_id,
+            $contact->contact=$request->contact,
+            $contact->position=$request->position,
+            $contact->code=$request->code,
+            $contact->phone=$request->phone,
+            $contact->extension=$request->extension,
+            $contact->mobile=$request->mobile,
+            $contact->fax=$request->fax,
+            $contact->email=$request->email,
+            $contact->specialFeature=$request->specialFeature,
+            $contact->clarification=$request->clarification,
+            $contact->typeContact=$request->typeContact,
+            $contact->language=$request->language,
+            $contact->status=$request->status,
+        ]);
+
+        return redirect()
+            ->route('contact.index')
+            ->with('success','Contacto actualizado correctamente');
     }
 
     /**
@@ -105,6 +130,10 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contact=Contact::find($id);
+        $contact->delete();
+        return redirect()
+            ->route('contact.index')
+            ->with('danger','Contacto eliminado correctamente');
     }
 }
