@@ -6,6 +6,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -63,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/division/delete/{id}', [DivisionController::class, 'destroy'])->name('division.delete');
 
     // RUTAS PARA USUARIOS
-    Route::view('/user/index', 'users.index')->name('user.index');
+    Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
