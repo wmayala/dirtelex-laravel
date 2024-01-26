@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+use LdapRecord\Models\ActiveDirectory\Entry;
+use LdapRecord\Models\ActiveDirectory\User as LdapUser;
+
+use LdapRecord\Query\Collection;
+
 class UserController extends Controller
 {
     /**
@@ -30,9 +35,18 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+            $search=$request->input('email');
+
+            $newUser=LdapUser::where('mail', '=', $search)->get();
+
+
+            dd($newUser);
+
+
+        return view('users.create')->with('result', $result);
     }
 
     /**
@@ -40,7 +54,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
     }
 
     /**
