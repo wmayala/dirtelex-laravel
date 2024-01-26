@@ -17,7 +17,7 @@
                             <table class="col-6">
                                 <tr>
                                     <td><label for="email" class="uppercase">Correo electrónico:</label></td>
-                                    <td>
+                                    <td class="d-flex align-items-center justify-content-center gap-2">
 
                                         <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                             type="text"
@@ -26,9 +26,9 @@
                                             placeholder="Escriba correo electrónico"
                                             required>
                                         <button type="submit"
-                                            class="btn rounded uppercase fw-bold d-flex justify-content-between align-items-center w-auto"
+                                            class="btn rounded uppercase fw-bold mb-2 w-auto"
                                             style="background-color: #111e60; color: #f2f2f2;">
-                                            <i class="fa fa-search"></i>
+                                            <i class="fa fa-search" width=32 height=64></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -36,7 +36,7 @@
 
                             </table>
                         </div>
-                            Correo encontrado: {{$result}}
+                            Correo encontrado:
                         <div class="text-center">
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
                                 <strong>Guardar</strong>

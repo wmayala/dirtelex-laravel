@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-use LdapRecord\Models\ActiveDirectory\Entry;
+use LdapRecord\Query\Model\Builder;
 use LdapRecord\Models\ActiveDirectory\User as LdapUser;
 
 use LdapRecord\Query\Collection;
@@ -32,21 +32,30 @@ class UserController extends Controller
         }
     }
 
+    public function searchEmail($email)
+    {
+        $user=LdapUser::where('mail', $email);
+        if($user)
+        {
+            return $user;
+        } else {
+            return null;
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
+       /*  $email=$request->input('email');
 
-            $search=$request->input('email');
-
-            $newUser=LdapUser::where('mail', '=', $search)->get();
-
-
-            dd($newUser);
+        $newUser=$this->searchEmail($email);
 
 
-        return view('users.create')->with('result', $result);
+            dd($newUser); */
+
+
+        return view('users.create');//, compact('newUser'));
     }
 
     /**
