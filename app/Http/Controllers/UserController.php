@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-use LdapRecord\Query\Model\Builder;
 use LdapRecord\Models\ActiveDirectory\User as LdapUser;
-
-use LdapRecord\Query\Collection;
+use LdapRecord\Query\Model\Builder;
+use LdapRecord\Models\Model;
 
 class UserController extends Controller
 {
@@ -34,12 +33,23 @@ class UserController extends Controller
 
     public function searchEmail($email)
     {
-        $user=LdapUser::where('mail', $email);
+        $user=LdapUser::where('mail', $email)->first();
+
         if($user)
         {
-            return $user;
-        } else {
-            return null;
+            $username=$user->getFirstAttribute('cn');
+            if($username)
+            {
+                return $username;
+            }
+            else
+            {
+                return 'NO disponible';
+            }
+        }
+        else
+        {
+            return 'No disponible';
         }
     }
     /**
@@ -47,15 +57,26 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-       /*  $email=$request->input('email');
-
-        $newUser=$this->searchEmail($email);
 
 
-            dd($newUser); */
+
+        if($request)
+        {
+            $userName=$this->searchEmail($request->input('search'));
+            //dd($userName);
+            if($userName)
+            {
+                return view('users.create', compact('userName'));
+            }
+
+        }
+        else
+        {
+            return view('users.create');
+        }
 
 
-        return view('users.create');//, compact('newUser'));
+
     }
 
     /**
