@@ -31,6 +31,8 @@ class UserController extends Controller
     {
         $user=LdapUser::where('mail',$email)->first();
 
+        // AQUI SE DEBE EXTRAER EL USUARIO Y RETORNARLO
+
         if($user)
         {
             $username=$user->getFirstAttribute('cn');
@@ -48,7 +50,8 @@ class UserController extends Controller
     public function create(Request $request)
     {
 
-
+        // UNA VEZ RETORNADO EL USUARIO, EXTARER TODOS LOS DATOS NECESARIOS PARA LA TABLA USER
+        // PARA PODER HACER EL STORE 
 
         if($request)
         {
