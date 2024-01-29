@@ -11,9 +11,6 @@ use LdapRecord\Models\Model;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         if($request)
@@ -24,8 +21,7 @@ class UserController extends Controller
                 ->with('users', $users);
         }
         else
-        {
-            $users=User::get();
+        {   $users=User::get();
             return view('users.index')
                 ->with('users', $users);
         }
@@ -33,24 +29,18 @@ class UserController extends Controller
 
     public function searchEmail($email)
     {
-        $user=LdapUser::where('mail', $email)->first();
+        $user=LdapUser::where('mail',$email)->first();
 
         if($user)
         {
             $username=$user->getFirstAttribute('cn');
             if($username)
-            {
-                return $username;
-            }
+            { return $username; }
             else
-            {
-                return 'NO disponible';
-            }
+            { return 'NO disponible'; }
         }
         else
-        {
-            return 'No disponible';
-        }
+        { return 'No disponible'; }
     }
     /**
      * Show the form for creating a new resource.
