@@ -11,50 +11,87 @@
                 </div>
 
                 <div class="row p-5 text-center">
+
                     @include('layouts.search')
+                    <span style="color: #111e60; font-size: 10pt; font-style: italic;">*** Ingrese un correo válido: <strong>nombre.apellido@bcr.gob.sv</strong> ***</span>
 
-                    <span>Usuario encontrado: {{$userName}}</span>
-                    {{-- <form  method="POST">
+
+                    <form action="{{route('user.store')}}" method="POST">
                         @csrf
-                        <div class="flex justify-center align-center">
-                            <table class="col-6">
-                                <tr>
-                                    <form>
-                                        <td><label for="email" class="uppercase">Correo electrónico:</label></td>
-                                        <td class="d-flex align-items-center justify-content-center gap-2">
-
-                                            <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                        <div class="text-center">
+                            @if($data)
+                                <br><br>
+                                <span class="fw-bold uppercase">Usuario encontrado:</span>
+                                <br><br>
+                                <table class="w-100 ">
+                                    <tr>
+                                        <td class="text-end">
+                                            <label for="name" class="w-50 uppercase text-start">
+                                                Nombre:
+                                            </label>
+                                        </td>
+                                        <td class="text-start">
+                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
+                                                type="text"
+                                                id="name"
+                                                name="name"
+                                                disabled
+                                                value="{{$data?$data[0]:"No hay información disponible"}}"
+                                            >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-end">
+                                            <label for="email" class="w-50 uppercase text-start">
+                                                Correo electrónico:
+                                            </label>
+                                        </td>
+                                        <td class="text-start">
+                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
                                                 type="text"
                                                 id="email"
                                                 name="email"
-                                                placeholder="Escriba correo electrónico"
-                                                required>
-                                            <button type="submit"
-                                                class="btn rounded uppercase fw-bold mb-2 w-auto"
-                                                style="background-color: #111e60; color: #f2f2f2;">
-                                                <i class="fa fa-search" width=32 height=64></i>
-                                            </button>
+                                                disabled
+                                                value="{{$data?$data[1]:"No hay información disponible"}}"
+                                            >
                                         </td>
-                                    </form>
-                                </tr>
-
-
-                            </table>
+                                    </tr>
+                                    {{-- <tr>
+                                        <td class="text-end">
+                                            <label for="unit" class="w-50 uppercase text-start">
+                                                Unidad:
+                                            </label>
+                                        </td>
+                                        <td class="text-start">
+                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
+                                                type="text"
+                                                id="unit"
+                                                name="unit"
+                                                disabled
+                                                value="{{$data?$data[2]:"No hay información disponible"}}"
+                                            >
+                                        </td>
+                                    </tr> --}}
+                                </table>
+                            @else
+                                <br><br>
+                                <span class="mx-3 p-3 rounded-lg text-danger fw-bold">No hay información para mostrar</span>
+                            @endif
                         </div>
-                            Correo encontrado: {{$newUser?$newUser:''}}
+                        <br>
                         <div class="text-center">
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
                                 <strong>Guardar</strong>
                             </button>
 
-                            <a href="{{route('subcategory.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
+                            <a href="{{route('user.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
                                 <strong>Cancelar</strong>
                             </a>
                         </div>
 
 
 
-                    </form> --}}
+                    </form>
 
                 </div>
 

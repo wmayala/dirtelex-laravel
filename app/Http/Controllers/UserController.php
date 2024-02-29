@@ -21,55 +21,60 @@ class UserController extends Controller
                 ->with('users', $users);
         }
         else
-        {   $users=User::get();
+        {
+            $users=User::get();
             return view('users.index')
                 ->with('users', $users);
         }
     }
 
-    public function searchEmail($email)
+    /* public function searchEmail($email)
     {
         $user=LdapUser::where('mail',$email)->first();
 
         // AQUI SE DEBE EXTRAER EL USUARIO Y RETORNARLO
+        //dd($user);
 
         if($user)
         {
-            $username=$user->getFirstAttribute('cn');
-            if($username)
-            { return $username; }
+            $data=[
+                $username=$user->getFirstAttribute('displayname'),
+                $email=$user->getFirstAttribute('mail'),
+            ];
+
+            if($data)
+            { return $data; }
             else
             { return 'NO disponible'; }
         }
         else
         { return 'No disponible'; }
-    }
+    } */
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-
-        // UNA VEZ RETORNADO EL USUARIO, EXTARER TODOS LOS DATOS NECESARIOS PARA LA TABLA USER
-        // PARA PODER HACER EL STORE 
-
         if($request)
         {
-            $userName=$this->searchEmail($request->input('search'));
-            //dd($userName);
-            if($userName)
+            $email=$request->input('search');
+            $user=LdapUser::where('mail',$email)->first();
+
+
+
+            if($user)
             {
-                return view('users.create', compact('userName'));
+                //dd($user->physicaldeliveryofficename);
+                $data=[
+                    $username=$user->getFirstAttribute('displayname'),
+                    $email=$user->getFirstAttribute('mail'),
+                    //$unit=$user->getFirstAttribute('physicaldeliveryofficename'),
+                ];
             }
-
+            else
+            { $data=[]; }
         }
-        else
-        {
-            return view('users.create');
-        }
-
-
-
+        return view('users.create', compact('data'));
     }
 
     /**
@@ -77,7 +82,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        $email=$request->input('email');
+        $us=LdapUser::where('mail',$email)->first();
 
+        //dd($us);
+
+        $usr=[
+            $username=$us->getFirstAttribute('displayname'),
+            $email=$us->getFirstAttribute('mail'),
+        ];
+
+        $user=new User([
+            'name'=>$usr->username,
+            'email'=>$usr->email,
+        ]);
+
+        $user->save();
+
+        return redirect()->route('user.index')
+            ->with('success','Usuario agregado correctamente');
 
     }
 
