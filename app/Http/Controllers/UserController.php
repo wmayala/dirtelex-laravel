@@ -11,6 +11,70 @@ use LdapRecord\Models\Model;
 
 class UserController extends Controller
 {
+    protected $ad;
+
+    public function __construct(LdapUser $ad)
+    {
+        $this->ad = $ad;
+    }
+
+    public function login2()
+    {
+        return view('auth.login2');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        dd($email, $password);
+
+        $auth = $this->ad->auth()->attempt($email, $password);
+
+        if ($auth) {
+            $user = $this->getLdapUser($email);
+
+            if ($user) {
+                $laravelUser = User::firstOrCreate(
+                    //['username' => $user['username']],
+                    [
+                        //'name' => $user['name'],
+                        'email' => $user['email'],
+                        'password' => bcrypt($user['username']),
+                    ]
+                );
+
+                auth()->login($laravelUser);
+
+                return response()->json([
+                    'success' => true,
+                    'user' => $laravelUser,
+                ]);
+            }
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid credentials',
+        ], 401);
+    }
+
+    public function getLdapUser($email)
+    {
+        return $this->ad->search()->where('email', $email)->first();
+    }
+
+
+
+
+
+
+
+
+
+
+
     public function index(Request $request)
     {
         if($request)
@@ -28,32 +92,12 @@ class UserController extends Controller
         }
     }
 
-    /* public function searchEmail($email)
-    {
-        $user=LdapUser::where('mail',$email)->first();
 
-        // AQUI SE DEBE EXTRAER EL USUARIO Y RETORNARLO
-        //dd($user);
 
-        if($user)
-        {
-            $data=[
-                $username=$user->getFirstAttribute('displayname'),
-                $email=$user->getFirstAttribute('mail'),
-            ];
-
-            if($data)
-            { return $data; }
-            else
-            { return 'NO disponible'; }
-        }
-        else
-        { return 'No disponible'; }
-    } */
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    /*public function create(Request $request)
     {
         if($request)
         {
@@ -64,11 +108,11 @@ class UserController extends Controller
 
             if($user)
             {
-                //dd($user->physicaldeliveryofficename);
+
                 $data=[
                     $username=$user->getFirstAttribute('displayname'),
                     $email=$user->getFirstAttribute('mail'),
-                    //$unit=$user->getFirstAttribute('physicaldeliveryofficename'),
+
                 ];
             }
             else
@@ -80,9 +124,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    /*public function store($data)
     {
-        dd($request);
+        dd($data);
+
+
         $email=$request->input('email');
         $us=LdapUser::where('mail',$email)->first();
 

@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-6 d-flex justify-content-end">
                         <a class="btn rounded uppercase fw-bold w-50 d-flex justify-content-between align-items-center"
-                            style="background-color: #111e60; color: #f2f2f2;" href="{{route('user.create')}}">
+                            style="background-color: #111e60; color: #f2f2f2;" href="{{route('user.login2')}}">
                             <i class="fa fa-bars"></i>
                             Agregar
                             <i class="fa fa-bars"></i>
@@ -48,7 +48,7 @@
                                         <th>NOMBRE</th>
                                         <th>CORREO ELECTRÓNICO</th>
                                         <th>CREADO</th>
-                                        <th class="text-center">ACCIONES</th>
+                                        {{-- <th class="text-center">ACCIONES</th> --}}
                                         <th class="text-center">ESTADO</th>
                                     </tr>
                                 </thead>
@@ -59,11 +59,11 @@
                                             <td class="col-4">{{$user->name}}</td>
                                             <td class="col-3">{{$user->email}}</td>
                                             <td class="col-3">{{$user->created_at}}</td>
-                                            <td>
+                                            {{--<td>
                                                 <div class="row">
-                                                    {{-- <div class="col-4">
+                                                     <div class="col-4">
                                                         <a href="{{route('subcategory.show', $user->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                    </div> --}}
+                                                    </div>
                                                     <div class="text-center">
                                                         <a href="{{route('subcategory.edit', $user->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     </div>
@@ -76,14 +76,14 @@
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </button>
                                                         </form>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
-                                            </td>
+                                            </td>--}}
                                             <td class="text-center">
                                                 @if($user->status==1)
-                                                    <span class="badge bg-success w-100">ACTIVO</span>
+                                                    <span class="badge bg-success">ACTIVO</span>
                                                 @else
-                                                    <span class="badge bg-danger w-100">INACTIVO</span>
+                                                    <span class="badge bg-danger">INACTIVO</span>
                                                 @endif
                                             </td>
                                         </tr>

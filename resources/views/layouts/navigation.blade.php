@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="d-flex gap-1">
                         <i class="fa fa-book" aria-hidden="true"></i>
-                        <span>{{ __('Inicio') }}</span>
+                        <span>{{ __('Directorio') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

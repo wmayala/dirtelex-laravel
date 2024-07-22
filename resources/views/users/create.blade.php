@@ -15,8 +15,11 @@
                     @include('layouts.search')
                     <span style="color: #111e60; font-size: 10pt; font-style: italic;">*** Ingrese un correo válido: <strong>nombre.apellido@bcr.gob.sv</strong> ***</span>
 
+                    <a href="{{route('user.login2')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
+                        <strong>Cancelar</strong>
+                    </a>
 
-                    <form action="{{route('user.store')}}" method="POST">
+                    {{-- <form action="{{route('user.store')}}" method="post">
                         @csrf
                         <div class="text-center">
                             @if($data)
@@ -35,7 +38,7 @@
                                                 type="text"
                                                 id="name"
                                                 name="name"
-                                                disabled
+
                                                 value="{{$data?$data[0]:"No hay información disponible"}}"
                                             >
                                         </td>
@@ -51,7 +54,7 @@
                                                 type="text"
                                                 id="email"
                                                 name="email"
-                                                disabled
+
                                                 value="{{$data?$data[1]:"No hay información disponible"}}"
                                             >
                                         </td>
@@ -72,7 +75,7 @@
                                             >
                                         </td>
                                     </tr> --}}
-                                </table>
+                               {{-- </table>
                             @else
                                 <br><br>
                                 <span class="mx-3 p-3 rounded-lg text-danger fw-bold">No hay información para mostrar</span>
@@ -91,7 +94,7 @@
 
 
 
-                    </form>
+                    </form> --}}
 
                 </div>
 
