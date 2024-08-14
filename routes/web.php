@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
     // RUTAS PARA USUARIOS
     Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/user/add', [UserController::class, 'login2'])->name('user.login2');
     Route::post('/user', [UserController::class, 'authenticate'])->name('user.authenticate');
     //Route::post('/user-sync', [SyncLdapUserController::class, 'sync'])->name('user.sync');

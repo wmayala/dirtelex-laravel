@@ -10,77 +10,71 @@
                     </div>
                 </div>
 
-                <div class="row p-5 text-center">
-
-                    @include('layouts.search')
-                    <span style="color: #111e60; font-size: 10pt; font-style: italic;">*** Ingrese un correo válido: <strong>nombre.apellido@bcr.gob.sv</strong> ***</span>
-
-                    <a href="{{route('user.login2')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
-                        <strong>Cancelar</strong>
-                    </a>
-
-                    {{-- <form action="{{route('user.store')}}" method="post">
+                <div class="row p-5">
+                    <form action="{{route('user.store')}}" method="post">
                         @csrf
-                        <div class="text-center">
-                            @if($data)
-                                <br><br>
-                                <span class="fw-bold uppercase">Usuario encontrado:</span>
-                                <br><br>
-                                <table class="w-100 ">
+
+                            <div class="flex justify-center align-center">
+                                <table class="col-6">
                                     <tr>
-                                        <td class="text-end">
-                                            <label for="name" class="w-50 uppercase text-start">
-                                                Nombre:
-                                            </label>
-                                        </td>
-                                        <td class="text-start">
-                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
+                                        <td><label for="name" class="uppercase">Nombre:</label></td>
+                                        <td>
+                                            <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                                 type="text"
                                                 id="name"
                                                 name="name"
-
-                                                value="{{$data?$data[0]:"No hay información disponible"}}"
-                                            >
+                                                placeholder="Escriba su nombre"
+                                                required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="text-end">
-                                            <label for="email" class="w-50 uppercase text-start">
-                                                Correo electrónico:
-                                            </label>
-                                        </td>
-                                        <td class="text-start">
-                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
+                                        <td><label for="email" class="uppercase">Correo electrónico:</label></td>
+                                        <td>
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
                                                 type="text"
                                                 id="email"
                                                 name="email"
-
-                                                value="{{$data?$data[1]:"No hay información disponible"}}"
-                                            >
+                                                placeholder="Escriba su correo electrónico">
                                         </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <td class="text-end">
-                                            <label for="unit" class="w-50 uppercase text-start">
-                                                Unidad:
-                                            </label>
+                                    <tr>
+                                        <td><label for="password" class="uppercase">Contraseña:</label></td>
+                                        <td>
+                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                type="password"
+                                                id="password"
+                                                name="password"
+                                                placeholder="Escriba su contraseña">
                                         </td>
-                                        <td class="text-start">
-                                            <input class="bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-50"
-                                                type="text"
-                                                id="unit"
-                                                name="unit"
-                                                disabled
-                                                value="{{$data?$data[2]:"No hay información disponible"}}"
-                                            >
+                                    </tr>
+                                    <tr>
+                                        <td><label for="status" class="uppercase">Estado:</label></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="col-6 d-flex align-items-center gap-2">
+                                                    <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                        type="radio"
+                                                        id="act"
+                                                        name="status"
+                                                        value="1"
+                                                        checked>
+                                                    <label for="act">ACTIVO</label>
+                                                </div>
+
+                                                <div class="col-6 d-flex align-items-center gap-2">
+                                                    <input class="col-6 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                        type="radio"
+                                                        id="inact"
+                                                        name="status"
+                                                        value="0">
+                                                    <label for="inact">INACTIVO</label>
+                                                </div>
+                                            </div>
                                         </td>
-                                    </tr> --}}
-                               {{-- </table>
-                            @else
-                                <br><br>
-                                <span class="mx-3 p-3 rounded-lg text-danger fw-bold">No hay información para mostrar</span>
-                            @endif
-                        </div>
+                                    </tr>
+                                </table>
+                            </div>
+                        
                         <br>
                         <div class="text-center">
                             <button type="submit" class="btn mt-3 text-sm uppercase w-25" style="background-color: #111e60; color: #f2f2f2">
@@ -94,7 +88,7 @@
 
 
 
-                    </form> --}}
+                    </form>
 
                 </div>
 

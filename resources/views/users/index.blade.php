@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-6 d-flex justify-content-end">
                         <a class="btn rounded uppercase fw-bold w-50 d-flex justify-content-between align-items-center"
-                            style="background-color: #111e60; color: #f2f2f2;" href="{{route('user.login2')}}">
+                            style="background-color: #111e60; color: #f2f2f2;" href="{{route('user.create')}}">
                             <i class="fa fa-bars"></i>
                             Agregar
                             <i class="fa fa-bars"></i>

@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="row p-5">
-                    <form action="{{route('subcategory.store')}}" method="POST">
+                    <form action="{{route('subcategory.store')}}" method="post">
                         @csrf
                         <div class="flex justify-center align-center">
                             <table class="col-6">
