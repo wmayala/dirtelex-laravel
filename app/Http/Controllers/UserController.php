@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('users.create');
     }
 
     /**
@@ -38,8 +38,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-
         $user=new User([
             'name'=>$request->name,
             'email'=>$request->email,

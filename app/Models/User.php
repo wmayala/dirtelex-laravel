@@ -8,13 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-use LdapRecord\Laravel\Auth\HasLdapUser;
-use LdapRecord\Laravel\Auth\LdapAuthenticatable;
-use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
-
-class User extends Authenticatable implements LdapAuthenticatable
+class User extends Authenticatable
 {
-    use HasFactory, Notifiable, AuthenticatesWithLdap, HasLdapUser;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
