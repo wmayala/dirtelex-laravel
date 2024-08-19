@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="d-flex gap-1">
                         <i class="fa fa-book" aria-hidden="true"></i>
-                        <span>{{ __('xxxxxxx') }}</span>
+                        <span>{{ __('Directorio') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -62,7 +62,7 @@
                             @endauth
                         </div>
                     @endif
-                    
+
                 </div>
             </div>
         </div>

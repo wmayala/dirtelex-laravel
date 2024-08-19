@@ -11,7 +11,7 @@ use App\Http\Controllers\SyncLdapUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('directory');
+    return view('directory.index');
 })->name('home');
 
 Route::get('/dashboard', function () {
