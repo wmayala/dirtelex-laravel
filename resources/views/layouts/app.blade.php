@@ -21,14 +21,6 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
         </script>
-
-        <!-- Sweetalert -->
-        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.all.min.js"></script>
-
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
@@ -41,6 +33,8 @@
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
+
+
                     </div>
                 </header>
             @endif
