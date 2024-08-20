@@ -18,31 +18,31 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')" class="d-flex gap-1">
+                    <x-nav-link :href="route('directory.contacts')" :active="request()->routeIs('directory.contacts')" class="d-flex gap-1">
                         <i class="fa fa-address-book" aria-hidden="true"></i>
                         <span>{{ __('Contactos') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('institution.index')" :active="request()->routeIs('institution.index')" class="d-flex gap-1">
+                    <x-nav-link :href="route('directory.institutions')" :active="request()->routeIs('directory.institutions')" class="d-flex gap-1">
                         <i class="fa fa-building" aria-hidden="true"></i>
                         <span>{{ __('Instituciones') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" class="d-flex gap-1">
+                    <x-nav-link :href="route('directory.categories')" :active="request()->routeIs('directory.categories')" class="d-flex gap-1">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
                         <span>{{ __('Categorías') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('subcategory.index')" :active="request()->routeIs('subcategory.index')" class="d-flex gap-1">
+                    <x-nav-link :href="route('directory.subcategories')" :active="request()->routeIs('directory.subcategories')" class="d-flex gap-1">
                         <i class="fa fa-th" aria-hidden="true"></i>
                         <span>{{ __('Subcategorías') }}</span>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('division.index')" :active="request()->routeIs('division.index')" class="d-flex gap-1">
+                    <x-nav-link :href="route('directory.divisions')" :active="request()->routeIs('directory.divisions')" class="d-flex gap-1">
                         <i class="fa fa-th-list" aria-hidden="true"></i>
                         <span>{{ __('Divisiones') }}</span>
                     </x-nav-link>

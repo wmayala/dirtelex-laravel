@@ -7,7 +7,7 @@ use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SyncLdapUserController;
+use App\Http\Controllers\DirectoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +17,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// RUTAS DE DIRECTORIO
+Route::get('/directory/contacts', [DirectoryController::class, 'contacts_dir'])->name('directory.contacts');
+Route::get('/directory/institutions',[DirectoryController::class,'institutions_dir'])->name('directory.institutions');
+Route::get('/directory/categories',[DirectoryController::class,'categories_dir'])->name('directory.categories');
+Route::get('/directory/subcategories',[DirectoryController::class,'subcategories_dir'])->name('directory.subcategories');
+Route::get('/directory/divisions',[DirectoryController::class,'divisions_dir'])->name('directory.divisions');
 
 Route::middleware('auth')->group(function () {
     // RUTAS PARA CONTACTOS
@@ -71,6 +78,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/add', [UserController::class, 'login2'])->name('user.login2');
     Route::post('/user', [UserController::class, 'authenticate'])->name('user.authenticate');
     //Route::post('/user-sync', [SyncLdapUserController::class, 'sync'])->name('user.sync');
+
+
+
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
