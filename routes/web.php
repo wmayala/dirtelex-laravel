@@ -25,6 +25,8 @@ Route::get('/directory/categories',[DirectoryController::class,'categories_dir']
 Route::get('/directory/subcategories',[DirectoryController::class,'subcategories_dir'])->name('directory.subcategories');
 Route::get('/directory/divisions',[DirectoryController::class,'divisions_dir'])->name('directory.divisions');
 
+
+
 Route::middleware('auth')->group(function () {
     // RUTAS PARA CONTACTOS
     Route::get('/contact/index',[ContactController::class, 'index'])->name('contact.index');

@@ -65,7 +65,8 @@
                                             <span>{{$contact->position?$contact->position:''}}</span>
                                         </td>
                                         <td>
-                                            <span>{{$contact->code?'('.$contact->code.') ':''}}</span><span>{{$contact->phone?$contact->phone:''}}</span><br>
+                                            <span>{{$contact->code?'('.$contact->code.') ':''}}</span><br>
+                                            <span>{{$contact->phone?'Tel.: ',$contact->phone:''}}</span><br>
                                             <span>{{$contact->mobile?'Cel.: '.$contact->mobile:''}}</span><br>
                                             <span>{{$contact->extension?'Ext.: '.$contact->extension:''}}</span><br>
                                             <span>{{$contact->fax?'Fax: '.$contact->fax:''}}</span>

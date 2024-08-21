@@ -189,9 +189,12 @@
                         </table>
                     </div>
                     <div class="text-center">
-                        <a href="{{route('contact.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
+                        {{-- <a href="{{route('contact.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
                             <strong><< Regresar</strong>
-                        </a>
+                        </a> --}}
+                        <button class="btn btn-secondary mt-3 text-sm uppercase col-3" onclick="history.back()">
+                            <strong><< Regresar</strong>
+                        </button>
                     </div>
                 </div>
              </div>
