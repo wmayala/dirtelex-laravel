@@ -20,12 +20,6 @@
                                         name="institution_id"
                                         value="{{$contact->institution->institution}}"
                                         disabled>
-                                    {{-- <select name="institution_id" id="institution_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                        <option selected>{{$contact->institution->institution}}</option>
-                                        @foreach($institutions as $institution)
-                                            <option value="{{$institution->id}}">{{$institution->institution}}</option>
-                                        @endforeach
-                                    </select> --}}
                                 </td>
                             </tr>
                             <tr>
@@ -35,14 +29,8 @@
                                         type="text"
                                         id="division_id"
                                         name="division_id"
-                                        value="{{$contact->division->division}}"
+                                        value="{{$contact->division->division?$contact->division->division:''}}"
                                         disabled>
-                                    {{-- <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                        <option selected>{{$contact->division->division}}</option>
-                                        @foreach($divisions as $division)
-                                            <option value="{{$division->id}}">{{$division->division}}</option>
-                                        @endforeach
-                                    </select> --}}
                                 </td>
                             </tr>
                             <tr>
@@ -189,15 +177,12 @@
                         </table>
                     </div>
                     <div class="text-center">
-                        {{-- <a href="{{route('contact.index')}}" class="btn btn-secondary mt-3 text-sm uppercase w-25">
-                            <strong><< Regresar</strong>
-                        </a> --}}
                         <button class="btn btn-secondary mt-3 text-sm uppercase col-3" onclick="history.back()">
                             <strong><< Regresar</strong>
                         </button>
                     </div>
                 </div>
-             </div>
-         </div>
-     </div>
- </x-app-layout>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

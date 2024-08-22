@@ -24,7 +24,6 @@
                                         <th>DESCRIPCIÓN</th>
                                         <th>CATEGORÍA</th>
                                         <th>SUBCATEGORÍA</th>
-                                        <th class="text-center">ACCIONES</th>
                                         <th class="text-center">ESTADO</th>
                                     </tr>
                                 </thead>
@@ -32,31 +31,113 @@
                                     @if($institutions)
                                         @foreach($institutions as $institution)
                                         <tr>
-                                            <td class="col-2">{{$institution->institution}}</td>
+                                            <td class="col-2">
+                                                <!-- Botón para abrir el modal -->
+                                                <button
+                                                x-data
+                                                x-on:click="$dispatch('open-modal', '{{ $modalName = 'showInfo' }}')"
+                                                class="bg-blue-600 rounded"
+                                                >
+                                                    {{$institution->institution}}
+                                                </button>
+
+                                                <!-- Implementación del modal -->
+                                                <x-modal :name="$modalName" maxWidth="2xl">
+                                                    <div class="p-4" style="background-color: #eeeff1;">
+                                                        <h2 class="fs-3 font-bold mb-4">DETALLES</h2>
+                                                        <hr class="mb-4">
+                                                        <div class="row">
+                                                            <div class="flex justify-center align-center">
+                                                                <table class="w-100">
+                                                                    <tr>
+                                                                        <td><label for="institution" class="uppercase">Nombre:</label></td>
+                                                                        <td>
+                                                                            <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                                                type="text"
+                                                                                id="institution"
+                                                                                name="institution"
+                                                                                value="{{$institution->institution}}"
+                                                                                disabled>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="acronym" class="uppercase">Siglas:</label></td>
+                                                                        <td>
+                                                                            <input class="mb-2 bg-gray-50 border border-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                                                type="text"
+                                                                                id="acronym"
+                                                                                name="acronym"
+                                                                                value="{{$institution->acronym}}"
+                                                                                disabled>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="description" class="uppercase">Descripción:</label></td>
+                                                                        <td>
+                                                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                                                type="text"
+                                                                                id="description"
+                                                                                name="description"
+                                                                                value="{{$institution->description?$institution->description:'No definida'}}"
+                                                                                disabled>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="category_id" class="uppercase">Categoría:</label></td>
+                                                                        <td>
+                                                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                                                type="text"
+                                                                                id="category_id"
+                                                                                name="category_id"
+                                                                                value="{{$institution->category->category}}"
+                                                                                disabled>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="subcategory_id" class="uppercase">Subcategoría:</label></td>
+                                                                        <td>
+                                                                            <input class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                                                                type="text"
+                                                                                id="subcategory_id"
+                                                                                name="subcategory_id"
+                                                                                value="{{$institution->subcategory->subcategory}}"
+                                                                                disabled>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="status" class="uppercase">Estado:</label></td>
+                                                                        <td>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="col-6 d-flex align-items-center gap-2">
+                                                                                    <input class="bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                                                                                        type="text"
+                                                                                        id="status"
+                                                                                        name="status"
+                                                                                        value="{{$institution->status===1?'ACTIVO':'INACTIVO'}}"
+                                                                                        disabled>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <hr class="mt-4">
+                                                        <div class="text-end">
+                                                            <button
+                                                                x-on:click="$dispatch('close-modal', '{{ $modalName }}')"
+                                                                class="mt-4 px-4 py-2 btn btn-secondary text-white rounded"
+                                                            >
+                                                                Cerrar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </x-modal>
+                                            </td>
                                             <td class="text-center">{{$institution->acronym}}</td>
                                             <td class="col-3">{{$institution->description?$institution->description:'No definida'}}</td>
                                             <td class="col-3">{{$institution->category->category}}</td>
                                             <td class="col">{{$institution->subcategory->subcategory?$institution->subcategory->subcategory:'No posee subcategoría'}}</td>
-                                            <td class="text-center">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <a href="{{route('institution.show', $institution->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <a href="{{route('institution.edit', $institution->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                    <div class="col-4">
-
-                                                        <form action="{{ route('institution.delete', $institution->id) }}" method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" >
-                                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
                                             <td class="text-center">
                                                 @if($institution->status==1)
                                                     <span class="badge bg-success w-100">ACTIVO</span>
@@ -67,7 +148,7 @@
                                         </tr>
                                         @endforeach
                                     @else
-                                        <tr><td colspan="4">No existen subcategorías</td></tr>
+                                        <tr><td colspan="4">No existen instituciones</td></tr>
                                     @endif
                                 </tbody>
                             </table>

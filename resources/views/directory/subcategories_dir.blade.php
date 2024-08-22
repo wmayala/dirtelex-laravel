@@ -32,7 +32,7 @@
                                                 <button
                                                     x-data
                                                     x-on:click="$dispatch('open-modal', '{{ $modalName = 'showInfo' }}')"
-                                                    class="py-2 bg-blue-600 rounded"
+                                                    class="bg-blue-600 rounded"
                                                 >
                                                     {{$subcategory->subcategory}}
                                                 </button>
@@ -44,7 +44,7 @@
                                                             <hr class="mb-4">
                                                             <div class="row">
                                                                 <div class="flex justify-center align-center">
-                                                                    <table class="w-75">
+                                                                    <table class="w-100">
                                                                         <tr>
                                                                             <td><label for="subcategory" class="uppercase">Nombre:</label></td>
                                                                             <td>

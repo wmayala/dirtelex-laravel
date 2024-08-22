@@ -31,9 +31,25 @@
                                     <td>
                                         <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
                                             <option selected>Seleccione una división</option>
-                                            @foreach($divisions as $division)
-                                                <option value="{{$division->id}}">{{$division->division}}</option>
-                                            @endforeach
+
+                                            {{--
+
+                                            VALIDAR SI LA INSTITUCION TIENE DIVISION (O VER COMO SE CONECTAN ENTRE SI)
+                                            PARA PODER MOSTRAR LISTADO DE DIVISIONES, SINO MOSTRAR MENSAJE
+                                            "NO EXISTEN DIVISIONES PARA ESTA INSTITUCION"
+
+                                            --}}
+
+
+
+
+                                            @if($divisions)
+                                                @foreach($divisions as $division)
+                                                    <option value="{{$division->id}}">{{$division->division}}</option>
+                                                @endforeach
+                                            @else
+                                                <option value="">No existen divisiones</option>
+                                            @endif
                                         </select>
                                     </td>
                                 </tr>
