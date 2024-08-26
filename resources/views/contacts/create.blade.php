@@ -16,40 +16,28 @@
                         <div class="flex justify-center align-center">
                             <table class="col-6 w-75">
                                 <tr>
+                                    <td><label for="division_id" class="uppercase">División:</label></td>
+                                    <td>
+                                        <select class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            name="division_id"
+                                            id="division_id">
+                                            <option selected>Seleccione una división</option>
+                                            @foreach($divisions as $division)
+                                                <option value="{{ $division->id }}">{{ $division->division }}</option>
+                                            @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td><label for="institution_id" class="uppercase">Institución:</label></td>
                                     <td>
-                                        <select name="institution_id" id="institution_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
+                                        <select  class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100"
+                                            name="institution_id"
+                                            id="institution_id"
+                                            required>
                                             <option selected>Seleccione una institución</option>
                                             @foreach($institutions as $institution)
                                                 <option value="{{$institution->id}}">{{$institution->institution}}</option>
                                             @endforeach
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="division_id" class="uppercase">División:</label></td>
-                                    <td>
-                                        <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                            <option selected>Seleccione una división</option>
-
-                                            {{--
-
-                                            VALIDAR SI LA INSTITUCION TIENE DIVISION (O VER COMO SE CONECTAN ENTRE SI)
-                                            PARA PODER MOSTRAR LISTADO DE DIVISIONES, SINO MOSTRAR MENSAJE
-                                            "NO EXISTEN DIVISIONES PARA ESTA INSTITUCION"
-
-                                            --}}
-
-
-
-
-                                            @if($divisions)
-                                                @foreach($divisions as $division)
-                                                    <option value="{{$division->id}}">{{$division->division}}</option>
-                                                @endforeach
-                                            @else
-                                                <option value="">No existen divisiones</option>
-                                            @endif
                                         </select>
                                     </td>
                                 </tr>

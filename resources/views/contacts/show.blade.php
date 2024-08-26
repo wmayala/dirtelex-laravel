@@ -29,7 +29,7 @@
                                         type="text"
                                         id="division_id"
                                         name="division_id"
-                                        value="{{$contact->division->division?$contact->division->division:''}}"
+                                        value="{{ $contact->division?$contact->division->division:'No existen divisiones asociadas'}}"
                                         disabled>
                                 </td>
                             </tr>

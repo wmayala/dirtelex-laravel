@@ -30,7 +30,7 @@
                                     <td><label for="division_id" class="uppercase">División:</label></td>
                                     <td>
                                         <select name="division_id" id="division_id" class="mb-2 bg-gray-50 border border-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-100">
-                                            <option selected>{{$contact->division->division}}</option>
+                                            <option selected>{{ $contact->division?$contact->division->division:'No existen divisiones asociadas'}}</option>
                                             @foreach($divisions as $division)
                                                 <option value="{{$division->id}}">{{$division->division}}</option>
                                             @endforeach

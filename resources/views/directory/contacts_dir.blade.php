@@ -44,7 +44,7 @@
                                             <!-- Implementación del modal -->
                                             <x-modal :name="$modalName" maxWidth="2xl">
                                                 <div class="p-4" style="background-color: #eeeff1;">
-                                                    <h2 class="fs-3 font-bold mb-4">DETALLES</h2>
+                                                    <h2 class="fs-3 font-bold mb-4">DETALLES {{ $contact->contact }}</h2>
                                                     <hr class="mb-4">
                                                     <div class="row">
                                                         <div class="flex justify-center align-center">
@@ -67,7 +67,7 @@
                                                                             type="text"
                                                                             id="division_id"
                                                                             name="division_id"
-                                                                            value="{{$contact->division->division}}"
+                                                                            value="{{ $contact->division?$contact->division->division:'No existen divisiones asociadas'}}"
                                                                             disabled>
                                                                     </td>
                                                                 </tr>
